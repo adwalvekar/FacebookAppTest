@@ -7,7 +7,8 @@
     {% if not session.logged_in %}
     <a href="/facebook_login">Login or Signup</a>
     {% else %}
-    {{data['name']}}
+    Name : {{data['name']}}<br>
+    Email : {{data['email']}}
    	<a href="/logout">Logout</a>
     {% endif %}
 </ul>

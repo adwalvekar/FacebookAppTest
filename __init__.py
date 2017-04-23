@@ -1,5 +1,5 @@
 from flask import Flask, url_for, request, session, redirect, render_template
-from flask_oauth import OAuth2
+from flask_oauth import OAuth
 
 FACEBOOK_APP_ID = '293823757717281'
 FACEBOOK_APP_SECRET = '49b409de34973230b046a4a091cea4a6'
@@ -32,9 +32,10 @@ def facebook_login():
 
 @app.route('/')
 def index():
-	if session['logged_in']:
+	if session.get('logged_in'):
 		data = facebook.get('/me').data
-	return render_template('index.html', data = data)
+		return render_template('index.html', data = data)
+	return render_template('index.html')
 
 @app.route("/facebook_authorized")
 @facebook.authorized_handler
