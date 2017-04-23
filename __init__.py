@@ -1,9 +1,10 @@
-from flask import Flask, url_for, request, session, redirect
+from flask import Flask, url_for, request, session, redirect, render_template
 from flask_oauth import OAuth
 
 FACEBOOK_APP_ID = '293823757717281'
 FACEBOOK_APP_SECRET = '49b409de34973230b046a4a091cea4a6'
 app = Flask(__name__)
+app.secret_key = '9ujYZLNmd6NIdPdlTSVJ'
 oauth = OAuth()
 
 facebook = oauth.remote_app('facebook',
@@ -28,6 +29,10 @@ def pop_login_session():
 def facebook_login():
     return facebook.authorize(callback=url_for('facebook_authorized',
         next=request.args.get('next'), _external=True))
+
+@app.route('/')
+def home():
+	return render_template('index.html')
 
 @app.route("/facebook_authorized")
 @facebook.authorized_handler
