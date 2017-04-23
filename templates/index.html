@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Facebook App Test Login</title>
+	<link rel="stylesheet" type="text/css" href="static/css/style.css">
+	<link rel="stylesheet" type="text/css" href="static/css/fa/css/font-awesome.min.css">
+	<link rel="icon" href="static/css/favicon.png" type="image/png" sizes="64x64">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property=”og:title” content=”Aditya Walvekar | Miracles “ />
+	<meta property=”og:type” content=”website”/>
+	<meta property=”og:url” content=”adityawalvekar.com”/>
+	<meta property=”og:image” content=”favicon.png”/>
+	<meta name="theme-color" content="#2C3E50">
+	<title>
+		Aditya Walvekar | Coming Soon.
+	</title>
 </head>
-<body>
+<body class="normal">
+	<img src="static/css/images/aw-light.svg" class="center">
+
     {% if not session.logged_in %}
-    <a href="/facebook_login">Login or Signup</a>
+     <div class="subText">
+   	 	<div class="social">
+			<a href="/facebook_login">
+			Login
+				<i class="fa fa-facebook" aria-hidden="true"></i>
+			</a>
+		</div>
+	</div>
     {% else %}
-    Name : {{data['name']}}<br>
-    Email : {{data['email']}}
-   	<a href="/logout">Logout</a>
+    <div class="subText">
+	<div class = "nametag">{{data['name']}}</div><br>
+	<div class = "nametag">{{data['id']}}</div><br>
+	<div class = "nametag">{{data['email']}}</div><br>
+	<div class = "nametag">{{data['gender']}}</div><br>
+	<div class = "nametag"><a href="/logout">Logout</a></div><br>
+	</div>
     {% endif %}
 </ul>
 </body>

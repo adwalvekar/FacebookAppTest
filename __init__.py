@@ -34,7 +34,7 @@ def facebook_login():
 def index():
 	if session.get('logged_in'):
 		data = facebook.get('/me').data
-		return render_template('index.html', data = data)
+		return render_template('index.html', data = op)
 	return render_template('index.html')
 
 @app.route("/facebook_authorized")
